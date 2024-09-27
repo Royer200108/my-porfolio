@@ -1,6 +1,6 @@
 ---
 
-import Navbar from "../components/Navbar.astro";
+import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 
 
@@ -17,18 +17,20 @@ const { title } = Astro.props;
 		
 	</head>
 	<body class="min-h-screen flex flex-col">
-		<header>
-			<Navbar />
-		</header>
-	  
+		<Navigation />
+
 		<!-- Contenedor principal con flex-grow para llenar el espacio -->
 		<main class="flex-grow container mx-auto pt-20">
-		  	<slot />
+			<slot />
 			<h1>Bienvenido a mi sitio web</h1>
-		  	<p>Aquí va el contenido...</p>
+			<p>Aquí va el contenido...</p>
 		</main>
 
 		<Footer />
+		
+		<script>
+			import "../../scripts/main.js";
+			</script>
 	</body>
-	  
+	
 </html>
