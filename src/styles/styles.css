@@ -1,0 +1,31 @@
+body {
+    background-color: rgb(6, 41, 37);
+    /*font-family: 'Reddit Sans Variable', sans-serif;*/
+    font-family: 'Reddit Sans Variable', sans-serif;
+}
+
+.bg-components{
+    background-color: rgb(4,74,66);
+    height: 75px;
+}
+
+.logo {
+    width: 65px;
+    height: 65px;
+    padding: 0, 0, 2rem, 0;
+}
+
+li a{
+    font-size: 20px;
+}
+
+li a:hover{
+    background-color: rgb(58, 145, 136);
+    zoom: 110%;
+    transition: 0.4s;
+}
+
+footer{
+    height: 117px;
+    width: 100vh;
+}
