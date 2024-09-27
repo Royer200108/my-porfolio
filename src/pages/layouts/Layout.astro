@@ -14,27 +14,21 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		
 	</head>
-	<body>
-		
-		<div class="container">
+	<body class="min-h-screen flex flex-col">
+		<header>
 			<Navbar />
+		</header>
+	  
+		<!-- Contenedor principal con flex-grow para llenar el espacio -->
+		<main class="flex-grow container mx-auto pt-20">
+		  	<slot />
+			<h1>Bienvenido a mi sitio web</h1>
+		  	<p>Aquí va el contenido...</p>
+		</main>
 
-			<main>
-				<slot />
-			</main>
-	
-			<Footer />
-		
-		</div>
-
+		<Footer />
 	</body>
+	  
 </html>
-
-<style>
-	.container{
-		min-height: 100dvh;
-		display: grid;
-		grid-template-columns: auto fr auto;
-	}
-</style>
