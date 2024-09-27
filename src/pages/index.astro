@@ -1,16 +1,31 @@
 ---
 import Layout from "./layouts/Layout.astro"
+import ConsoleDiv from "./components/ConsoleDiv.astro"
+import TextBox from "./components/TextBox.astro"
 --- 
 
 <Layout title="Roger Barahona">
 
-    <div style="">
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam sapiente doloribus esse, consequatur fugit recusandae inventore vero labore error nesciunt enim, quidem, reiciendis ratione. Ea eum aspernatur aliquid temporibus totam ab cupiditate eaque iure sed consequatur incidunt iste itaque ut voluptatem facilis, nemo fuga voluptas quae sunt fugiat cumque quaerat numquam id. Provident tempore quis pariatur inventore architecto voluptate voluptatibus vero vitae voluptas in eius aspernatur a fugiat iure sit error veniam, exercitationem illo reprehenderit ullam! Ipsam dolore vel temporibus enim. Iste ea veniam rem non modi voluptatum, expedita, explicabo labore, consequatur culpa quibusdam nam hic enim. Adipisci, expedita modi!
-            lorem100*4
-        </p>
+    <div slot="left-side" class="flex flex-col space-y-4 justify-center ">
+        <img src="../../public/images/RogerB.png" alt="" style="width: 400px; height: 400px" class="p-4">
+        <br>
+        <ConsoleDiv content="Hola, mi nombre es Roger Barahona!!"/>
+    </div>
+
+    <div slot="rigth-side" class="p-4 flex flex-col space-y-4 justify-center items-center">
+
+        <TextBox 
+            title1="Acerca de mi..." 
+            content1="Soy un apasionado de la programación, el desarrollo web y el análisis de bases de datos. Mi amor por el código comenzó en la secundaria cuando desarrollé mi primer sitio web. Desde entonces, he trabajado para incrementar y perfeccionar mis habilidades en HTML, JavaScript, TypeScript y otras tecnologías. hola"
+            content2="A través de mis habilidades y experiencia, puedo ayudar a organizaciones y personas que necesiten soluciones tecnológicas eficientes y personalizadas. Mi objetivo es aplicar mis conocimientos para desarrollar aplicaciones web funcionales y escalables, optimizar procesos y mejorar la experiencia del usuario. Estoy comprometido a contribuir al éxito de los proyectos, ofreciendo soluciones innovadoras que se adapten a las necesidades específicas de cada cliente."
+        />
+            
+        <TextBox 
+            title1="Mis hobbies..." 
+            content2="En mi tiempo libre soy un aficionado a los acuarios y todo lo relacionado a ello, además adoro los videojuegos y disfrutar de una buena taza de café por las tardes."
+        />
+
     </div>
 
 </Layout>
-
 

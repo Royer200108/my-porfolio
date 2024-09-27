@@ -1,0 +1,29 @@
+---
+const { title1, title2, content1, content2 } = Astro.props;
+---
+
+<div class="flex ">
+    <div class="flex font-bold pb-2 vertical pt-8"> 
+        {title1}
+    </div>
+    
+    <div class=" text-base p-2 border-l-2 align-bottom content-end">
+        <p>{title2}</p>
+        <p>{content1}</p>
+        <br>
+        <p>{content2}</p>
+    </div>
+</div>
+
+<style>
+    div  {
+        color:rgb(184, 225, 221)
+    }
+
+    .vertical{
+        writing-mode: sideways-lr;
+        
+        
+    }
+
+</style>

@@ -20,17 +20,20 @@ const { title } = Astro.props;
 		<Navigation />
 
 		<!-- Contenedor principal con flex-grow para llenar el espacio -->
-		<main class="flex-grow container mx-auto pt-20">
+		<main class="flex flex-grow container mx-auto pt-20">
 			<slot />
-			<h1>Bienvenido a mi sitio web</h1>
-			<p>Aquí va el contenido...</p>
+
+			<div class="w-1/2 flex justify-center">
+				<slot name="left-side"/>
+			</div>
+			<div class="flex w-1/2 justify-center">
+				<slot name="rigth-side"/>
+			</div>
 		</main>
 
 		<Footer />
 		
-		<script>
-			import "../../scripts/main.js";
-			</script>
+		
 	</body>
-	
+
 </html>
