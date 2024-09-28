@@ -1,0 +1,41 @@
+---
+import Layout from "./layouts/Layout.astro"
+import TextBox from "./components/TextBox.astro"
+import ConsoleDiv from "./components/ConsoleDiv.astro"
+---
+
+<Layout title="Habilidades">
+
+    <div slot="left-side" class="flex flex-col space-y-4 justify-center items-center">
+        <TextBox 
+            title1="¿Habilidades técnicas?" 
+            title2="¿Qué incluyen mis habilidades técnicas?"
+            content1="Soy un apasionado de la programación, el desarrollo web y el análisis de bases de datos. Mi amor por el código comenzó en la secundaria cuando desarrollé mi primer sitio web. Desde entonces, he trabajado para incrementar y perfeccionar mis habilidades en HTML, JavaScript, TypeScript y otras tecnologías. hola"
+            content2="A través de mis habilidades y experiencia, puedo ayudar a organizaciones y personas que necesiten soluciones tecnológicas eficientes y personalizadas. Mi objetivo es aplicar mis conocimientos para desarrollar aplicaciones web funcionales y escalables, optimizar procesos y mejorar la experiencia del usuario. Estoy comprometido a contribuir al éxito de los proyectos, ofreciendo soluciones innovadoras que se adapten a las necesidades específicas de cada cliente."
+        />
+
+        <div class="w-2/3 flex">
+            <ul class="bg-container w-full flex justify-around items-center bg-slate-300 rounded-full p-1">
+                <li >
+                    <a class="text-base flex items-center justify-center w-60 p-2 h-10 text-white rounded-full hover:text-black" href="/">Habilidades técnicas</a>
+                </li>
+                <li>
+                    <a class="flex items-center justify-center w-60 p-2 h-10  text-white rounded-full hover:text-black" href="">Habilidades blandas</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div slot="rigth-side" class="flex flex-col space-y-4 justify-center items-center bg-slate-50">
+        <ConsoleDiv 
+        content=">. Hola mundo"
+        />
+    </div>
+
+</Layout>
+
+<style>
+    .bg-container{
+        background-color: rgb(11, 115, 103);
+    }
+</style>
