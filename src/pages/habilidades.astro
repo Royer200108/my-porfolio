@@ -2,6 +2,54 @@
 import Layout from "./layouts/Layout.astro"
 import TextBox from "./components/TextBox.astro"
 import ConsoleDiv from "./components/ConsoleDiv.astro"
+
+const tecnologicalsSkills = [
+    
+    { 
+        title: 'Lenguajes de programacion', 
+        elements:[
+            { title: 'Java', href: '/public/images/skills/java.png' },
+            { title: 'JavaScript', href:'/public/images/skills/js.png' },
+            { title: 'TypeScript', href: '/public/images/skills/typescript.png' },
+            { title: 'Bash', href: '/public/images/skills/gnu-bash.png' },
+            { title: 'Python', href: '/public/images/skills/python.png' },
+        ]
+    },
+    { 
+        title: 'Frameworks', 
+        elements:[
+            { title: 'SpringBoot', href: '/public/images/skills/springboot.png'},
+            { title: 'NodeJS', href: '/public/images/skills/nodejs.png'},
+            { title: 'BootsTrap', href: '/public/images/skills/bootstrap.png'},
+        ]
+    },
+    { 
+        title: 'Herramientas Web', 
+        elements:[
+            { title: 'HTML', href: '/public/images/skills/html.png'},
+            { title: 'CSS', href: '/public/images/skills/css.png'},
+        ]
+    },
+    { 
+        title: 'Versionamiento', 
+        elements:[
+            { title: 'git', href: '/public/images/skills/git.png'},
+            { title: 'GitHub', href: '/public/images/skills/github.png'},
+        ]
+    },
+    { 
+        title: 'Sistemas operativos y entornos de desarrollo', 
+        elements:[
+            { title: 'Linux', href: '/public/images/skills/linux.png'},
+            { title: 'Windows', href: '/public/images/skills/windows.png'},
+            { title: 'jupyter', href: '/public/images/skills/jupyter.png'},
+            { title: 'VSCode', href: '/public/images/skills/vscode.png'},
+            { title: 'Eclipse', href: '/public/images/skills/eclipse.png'},
+            { title: 'Google Colab', href: '/public/images/skills/google-colab.png'},
+        ]
+    },
+
+]
 ---
 
 <Layout title="Habilidades">
@@ -26,10 +74,21 @@ import ConsoleDiv from "./components/ConsoleDiv.astro"
         </div>
     </div>
 
-    <div slot="rigth-side" class="flex flex-col space-y-4 justify-center items-center bg-slate-50">
-        <ConsoleDiv 
-        content=">. Hola mundo"
-        />
+    <div slot="rigth-side" class="w-max flex flex-col space-y-4 justify-center items-center pt-4 pb-4">
+        <ConsoleDiv content="">
+                {tecnologicalsSkills.map((item) => (
+                    <p> >. {item.title}</p>
+                    <div class="flex p-4">
+                        {item.elements.map((element) =>(
+                            <div style="width: 90px; heigth: 90px" class="p-2 bg-white rounded-lg m-2 image-container z-10">
+                                <img src={element.href} style="width: 60px, heigth: 60px ">
+                                <span class="hover-text">{element.title}</span>
+                            </div>
+                        ))}
+                    </div>
+                ))}
+            
+        </ConsoleDiv>
     </div>
 
 </Layout>
@@ -38,4 +97,37 @@ import ConsoleDiv from "./components/ConsoleDiv.astro"
     .bg-container{
         background-color: rgb(11, 115, 103);
     }
+
+/* Contenedor de la imagen */
+        .image-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Texto oculto inicialmente */
+        .image-container .hover-text {
+            visibility: hidden;
+            width: 150px;
+            background-color: rgba(11, 117, 104, 0.5);;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            border-radius: 5px;
+
+            /* Posición del texto sobre la imagen */
+            position: absolute;
+            bottom: 100%; /* Colocar el texto sobre la imagen */
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1; /* Asegurar que el texto esté por encima de la imagen */
+        }
+
+        /* Mostrar el texto al hacer hover sobre la imagen */
+        .image-container:hover .hover-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
 </style>

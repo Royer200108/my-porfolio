@@ -6,8 +6,11 @@ const {content} = Astro.props;
     <div class="w-auto h-5 bg-white rounded-t-lg pl-4">
         $.
     </div>
-    <div class="w-auto h-16 bg-black rounded-b-lg pl-8 flex items-center font-color" >
+    <div class="w-auto h-auto bg-black rounded-b-lg pl-8 pt-4 pb-4 flex flex-col content-center font-color" >
+        <!-- <p>{content}</p>-->
         <p>{content}</p>
+        
+        <slot />
     </div>
 </div>
 
