@@ -2,6 +2,7 @@
 import Layout from "./layouts/Layout.astro"
 import TextBox from "./components/TextBox.astro"
 import ConsoleDiv from "./components/ConsoleDiv.astro"
+import SkillCards from "./components/SkillCards.astro"
 
 const tecnologicalsSkills = [
     
@@ -33,7 +34,7 @@ const tecnologicalsSkills = [
     { 
         title: 'Versionamiento', 
         elements:[
-            { title: 'git', href: '/public/images/skills/git.png'},
+            { title: 'Git', href: '/public/images/skills/git.png'},
             { title: 'GitHub', href: '/public/images/skills/github.png'},
         ]
     },
@@ -48,6 +49,41 @@ const tecnologicalsSkills = [
             { title: 'Google Colab', href: '/public/images/skills/google-colab.png'},
         ]
     },
+]
+
+const softSkills = [
+
+    {   
+        label: 'Liderazgo y gestión',
+        elements: [
+            {
+                emoji:'🤝',
+                title:'Liderazgo',
+                description: 'Me esfuerzo por guiar con empatía y visión, empoderando a los demás para que alcancen sus metas mientras promovemos juntos un ambiente de crecimiento y éxito compartido.'
+            },
+            {
+                emoji:'🔄',
+                title:'Gestión de cambios',
+                description: 'Apoyo la gestión de cambios como una oportunidad para innovar, adaptarnos y mejorar continuamente.'
+            },
+            {
+                emoji:'⏰',
+                title:'Gestión del tiempo',
+                description: 'Gestiono el tiempo de manera estratégica, priorizando tareas clave, estableciendo metas claras y optimizando recursos.'
+            },
+        ]
+    },
+    {
+        label: 'Desarrollo personal',
+        elements: [
+            {
+                emoji:'🌱',
+                title:'Resiliente',
+                etiqueta: 'Desarrollo personal',
+                description: 'Me considero alguien capaz de adaptarme a los desafíos y aprender de las dificultades.'
+            },
+        ]
+    }
 
 ]
 ---
@@ -55,45 +91,106 @@ const tecnologicalsSkills = [
 <Layout title="Habilidades">
 
     <div slot="left-side" class="flex flex-col space-y-4 justify-center items-center">
-        <TextBox 
-            title1="¿Habilidades técnicas?" 
-            title2="¿Qué incluyen mis habilidades técnicas?"
-            content1="Soy un apasionado de la programación, el desarrollo web y el análisis de bases de datos. Mi amor por el código comenzó en la secundaria cuando desarrollé mi primer sitio web. Desde entonces, he trabajado para incrementar y perfeccionar mis habilidades en HTML, JavaScript, TypeScript y otras tecnologías. hola"
-            content2="A través de mis habilidades y experiencia, puedo ayudar a organizaciones y personas que necesiten soluciones tecnológicas eficientes y personalizadas. Mi objetivo es aplicar mis conocimientos para desarrollar aplicaciones web funcionales y escalables, optimizar procesos y mejorar la experiencia del usuario. Estoy comprometido a contribuir al éxito de los proyectos, ofreciendo soluciones innovadoras que se adapten a las necesidades específicas de cada cliente."
-        />
+        <div class="flex flex-col space-y-4 justify-center items-center">
+            <div id="hardSkillsText" class="flex flex-col space-y-4 justify-center items-center">
+                <TextBox 
+                    title1="¿Habilidades técnicas?" 
+                    title2="¿Qué incluyen mis habilidades técnicas?"
+                    content1="Soy un apasionado de la programación, el desarrollo web y el análisis de bases de datos. Mi amor por el código comenzó en la secundaria cuando desarrollé mi primer sitio web. Desde entonces, he trabajado para incrementar y perfeccionar mis habilidades en HTML, JavaScript, TypeScript y otras tecnologías. hola"
+                    content2="A través de mis habilidades y experiencia, puedo ayudar a organizaciones y personas que necesiten soluciones tecnológicas eficientes y personalizadas. Mi objetivo es aplicar mis conocimientos para desarrollar aplicaciones web funcionales y escalables, optimizar procesos y mejorar la experiencia del usuario. Estoy comprometido a contribuir al éxito de los proyectos, ofreciendo soluciones innovadoras que se adapten a las necesidades específicas de cada cliente."
+                />
+            </div>
 
-        <div class="w-2/3 flex">
-            <ul class="bg-container w-full flex justify-around items-center bg-slate-300 rounded-full p-1">
-                <li >
-                    <a class="text-base flex items-center justify-center w-60 p-2 h-10 text-white rounded-full hover:text-black" href="/">Habilidades técnicas</a>
-                </li>
-                <li>
-                    <a class="flex items-center justify-center w-60 p-2 h-10  text-white rounded-full hover:text-black" href="">Habilidades blandas</a>
-                </li>
-            </ul>
+            <div id="softSkillsText" class="flex flex-col space-y-4 justify-center items-center sr-only">
+                <TextBox 
+                    title1="¿Habilidades blandas?" 
+                    title2="¿Qué incluyen mis habilidades blandas?"
+                    content2="Con el pasar del tiempo he vivido muchas experiencias las cuales me han formado como persona y me han ayudado a ser mejor en mi vida personal como profesional."
+                />
+            </div>
+
+            <div class="w-2/3 flex">
+                <ul class="bg-container w-full flex justify-around items-center bg-slate-300 rounded-full p-1">
+                    <li >
+                        <a id="softSkills" class="text-base flex items-center justify-center w-60 p-2 h-10 text-white rounded-full hover:text-black" href="">Habilidades técnicas</a>
+                    </li>
+                    <li>
+                        <a id="hardSkills" class="flex items-center justify-center w-60 p-2 h-10  text-white rounded-full hover:text-black" href="">Habilidades blandas</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
+        
 
     <div slot="rigth-side" class="w-max flex flex-col space-y-4 justify-center items-center pt-4 pb-4">
-        <ConsoleDiv content="">
-                {tecnologicalsSkills.map((item) => (
-                    <p> >. {item.title}</p>
-                    <div class="flex p-4">
-                        {item.elements.map((element) =>(
-                            <div style="width: 90px; heigth: 90px" class="p-2 bg-white rounded-lg m-2 image-container z-10">
-                                <img src={element.href} style="width: 60px, heigth: 60px ">
-                                <span class="hover-text">{element.title}</span>
-                            </div>
-                        ))}
-                    </div>
-                ))}
-            
-        </ConsoleDiv>
+        <div id="hardSkillsCard" style="display: block;" class="flex flex-col space-y-4 justify-center items-center">
+            <ConsoleDiv content="">
+                    {tecnologicalsSkills.map((item) => (
+                        <p> >. {item.title}</p>
+                        <div class="flex p-4">
+                            {item.elements.map((element) =>(
+                                <div style="width: 90px; heigth: 90px" class="p-2 bg-white rounded-lg m-2 image-container z-10">
+                                    <img src={element.href} style="width: 60px, heigth: 60px ">
+                                    <span class="hover-text">{element.title}</span>
+                                </div>
+                            ))}
+                        </div>
+                    ))}
+            </ConsoleDiv>
+        </div>
+
+        <div id="softSkillsCard" style="display: block;" class="flex flex-col space-y-4 justify-center items-center sr-only">
+            <ConsoleDiv content="">
+                    {softSkills.map((item) => (
+                        <p> >. {item.label}</p>
+                        <div class="grid grid-cols-2 p-4 " style="color:black">
+                            {item.elements.map((element) =>(
+                                <SkillCards emoji={ element.emoji } title={element.title} description={element.description}/>
+                            ))}
+                        </div>
+                    ))}
+            </ConsoleDiv>
+        </div>
     </div>
 
 </Layout>
 
+<script>
+    toggleSkillsVisibility('hardSkills', 'softSkills','hardSkillsText','hardSkillsCard','softSkillsText','softSkillsCard')
+    toggleSkillsVisibility('softSkills', 'hardSkills','softSkillsText','softSkillsCard','hardSkillsText','hardSkillsCard')
+
+    function toggleSkillsVisibility(a1Id: string, a2Id: string, div1Id: string, div2Id: string, div3Id: string, div4Id: string) {
+        document.getElementById(a1Id)?.addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            let a1 = document.getElementById(a1Id);
+            let a2 = document.getElementById(a2Id);
+            let div1 = document.getElementById(div1Id);
+            let div2 = document.getElementById(div2Id);
+            let div3 = document.getElementById(div3Id);
+            let div4 = document.getElementById(div4Id);
+            
+            if (div1 && div2 && div3 && div4 && a1 && a2) {
+                if (!div1.classList.contains('sr-only')) {
+                    a1.style.backgroundColor = 'rgb(58, 145, 136)';
+                    a2.style.backgroundColor = 'rgb(58, 145, 136, 0)';
+                    div1.classList.add('sr-only');
+                    div2.classList.add('sr-only');
+                    div3.classList.remove('sr-only');
+                    div4.classList.remove('sr-only');
+                }
+            }
+        });
+    }
+
+</script>
+
 <style>
+    #softSkills {
+        background-color: rgb(58, 145, 136);
+    }
+
     .bg-container{
         background-color: rgb(11, 115, 103);
     }
@@ -102,6 +199,9 @@ const tecnologicalsSkills = [
         .image-container {
             position: relative;
             display: inline-block;
+        }
+        .image-container:hover{
+            box-shadow: 5px 5px 5px 5px teal;
         }
 
         /* Texto oculto inicialmente */
