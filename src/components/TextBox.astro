@@ -22,6 +22,7 @@ const { title1, title2, content1, content2 } = Astro.props;
         <p>{content1}</p>
         <br>
         <p>{content2}</p>
+        <slot name="content" />
     </div>
 </div>
 

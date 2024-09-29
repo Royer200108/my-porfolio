@@ -8,6 +8,7 @@ const projects = [
     {
         title: 'GearShift Rent A Car',
         img:'../../public/images/projects/gearshift.png',
+        route:'/projects/gearshift',
         tecnologies:[
             {
                 route: '../../public/images/skills/html.png',
@@ -23,6 +24,7 @@ const projects = [
     {
         title: 'MacaoExpress',
         img:'../../public/images/projects/macaoexpress.png',
+        route:'macaoexpress',
         tecnologies:[
             {
                 route: '../../public/images/skills/html.png',
@@ -32,6 +34,9 @@ const projects = [
             },
             {
                 route: '../../public/images/skills/bootstrap.png',
+            },
+            {
+                route: '../../public/images/skills/linux.png',
             }
         ]
     },
@@ -52,7 +57,7 @@ const projects = [
     <div slot="rigth-side" class="p-4 grid grid-cols-2 space-y-4 justify-center items-center">
         
             {projects.map((element) =>(
-                <ProjectCards title={element.title} image={element.img}>
+                <ProjectCards url={element.route} title={element.title} image={element.img}>
                     <div class="flex pl-4">
                         {element.tecnologies.map((item) =>(
                             <img src={item.route} alt="" class="w-5 h-5 ml-4 mb-2">

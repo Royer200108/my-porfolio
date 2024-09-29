@@ -1,0 +1,69 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import TextBox from '../../components/TextBox.astro';
+
+export async function getStaticPaths() {
+  const projectEntries = await getCollection('projects');
+  return projectEntries.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+interface Props {
+  entry: {
+    slug: string;
+    data: {
+      title: string;
+      description: string;
+      icon: string;
+    };
+    render: () => Promise<{ Content: any; headings: any[] }>;
+  };
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await entry.render();
+---
+
+<Layout title={`${entry.data.title} - Uayeb Caballero`}>
+    
+    <div>Hola</div>
+
+    <div slot="left-side" class="p-4 flex flex-col space-y-4 justify-center items-center ">
+      <TextBox 
+      title1={entry.data.title}
+      title2={entry.data.title}
+      content1={entry.data.description}
+      content2=''
+      >
+      <div slot="content">
+        <article class="prose  lg:prose-lg max-w-none">
+          <Content />
+        </article>
+      </div>
+      </TextBox>
+    </div>
+
+    <div slot="rigth-side" class="p-4 flex flex-col space-y-4 justify-center items-center ">
+      <img src={entry.data.icon} alt="" class="rounded-xl">
+    </div>
+</Layout>
+
+<style is:global>
+  .prose h1 { @apply text-3xl font-bold  mb-4 mt-8; }
+  .prose h2 { @apply text-2xl font-semibold  mb-4 mt-8; }
+  .prose h3 { @apply text-xl font-semibold  mb-3 mt-6; }
+  .prose p { @apply mb-4 text-white; }
+  .prose ul { @apply list-disc list-inside mb-4; }
+  .prose ol { @apply list-decimal list-inside mb-4; }
+  .prose li { @apply mb-2; }
+
+  .prose code { @apply bg-orange-100  py-0.5 rounded; }
+  .prose pre { @apply bg-gray-100 p-4 rounded-lg overflow-x-auto; }
+  .prose pre code { @apply bg-transparent ; }
+  .prose blockquote { @apply border-l-4 border-orange-500 pl-4 italic; }
+  .prose table { @apply w-full border-collapse border border-orange-200 mb-4; }
+  .prose th, .prose td { @apply border border-orange-200 p-2; }
+  .prose th { @apply bg-orange-100 font-semibold; }
+</style>
