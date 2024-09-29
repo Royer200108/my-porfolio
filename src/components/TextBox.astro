@@ -1,4 +1,11 @@
 ---
+export interface Props {
+    title1: string;
+    title2: string;
+    content1: string;
+    content2: string;
+}
+
 const { title1, title2, content1, content2 } = Astro.props;
 ---
 
@@ -7,7 +14,10 @@ const { title1, title2, content1, content2 } = Astro.props;
         {title1}
     </div>
     
-    <div class=" text-base p-2 border-l-2 align-bottom content-end">
+    <div class="text-base p-2 border-l-2 align-bottom content-end">
+        <div class="flex justify-center">
+            <slot />
+        </div>
         <p class="font-medium text-3xl">{title2}</p>
         <p>{content1}</p>
         <br>

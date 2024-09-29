@@ -1,0 +1,27 @@
+---
+export interface Props {
+    title: string;
+    image: string;
+}
+
+const { title, image} = Astro.props;
+
+---
+
+<a href="">
+    <div id="container" class="grid grid-cols-1 bg-slate-300 rounded-lg m-2" style="background-image:{image};">
+        <img src={image} class="rounded-t-lg">
+        <div class="grid grid-cols-1 rounded-b-lg" style="background-color: rgb(58, 145, 136);">
+            <div class="text-2xl pl-4">{ title }</div>
+            <slot />
+        </div>
+    </div>
+</a>
+
+<style>
+    a:hover{
+        zoom: 120%;
+        transition: 0.5s
+    }
+    ;
+</style>

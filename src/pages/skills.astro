@@ -1,8 +1,8 @@
 ---
-import Layout from "./layouts/Layout.astro"
-import TextBox from "./components/TextBox.astro"
-import ConsoleDiv from "./components/ConsoleDiv.astro"
-import SkillCards from "./components/SkillCards.astro"
+import Layout from "../layouts/Layout.astro"
+import TextBox from "../components/TextBox.astro"
+import ConsoleDiv from "../components/ConsoleDiv.astro"
+import SkillCards from "../components/SkillCards.astro"
 
 const tecnologicalsSkills = [
     
@@ -88,7 +88,7 @@ const softSkills = [
 ]
 ---
 
-<Layout title="Habilidades">
+<Layout title="Habilidades - Roger Barahona">
 
     <div slot="left-side" class="flex flex-col space-y-4 justify-center items-center">
         <div class="flex flex-col space-y-4 justify-center items-center">
@@ -105,6 +105,7 @@ const softSkills = [
                 <TextBox 
                     title1="¿Habilidades blandas?" 
                     title2="¿Qué incluyen mis habilidades blandas?"
+                    content1=""
                     content2="Con el pasar del tiempo he vivido muchas experiencias las cuales me han formado como persona y me han ayudado a ser mejor en mi vida personal como profesional."
                 />
             </div>
@@ -157,32 +158,48 @@ const softSkills = [
 </Layout>
 
 <script>
-    toggleSkillsVisibility('hardSkills', 'softSkills','hardSkillsText','hardSkillsCard','softSkillsText','softSkillsCard')
-    toggleSkillsVisibility('softSkills', 'hardSkills','softSkillsText','softSkillsCard','hardSkillsText','hardSkillsCard')
+    // Llamada a la función con los IDs correspondientes
+toggleSkillsVisibility('hardSkills', 'softSkills', 'hardSkillsText', 'hardSkillsCard', 'softSkillsText', 'softSkillsCard');
+toggleSkillsVisibility('softSkills', 'hardSkills', 'softSkillsText', 'softSkillsCard', 'hardSkillsText', 'hardSkillsCard');
 
-    function toggleSkillsVisibility(a1Id: string, a2Id: string, div1Id: string, div2Id: string, div3Id: string, div4Id: string) {
-        document.getElementById(a1Id)?.addEventListener('click', function(event) {
-            event.preventDefault();
-            
-            let a1 = document.getElementById(a1Id);
-            let a2 = document.getElementById(a2Id);
-            let div1 = document.getElementById(div1Id);
-            let div2 = document.getElementById(div2Id);
-            let div3 = document.getElementById(div3Id);
-            let div4 = document.getElementById(div4Id);
-            
-            if (div1 && div2 && div3 && div4 && a1 && a2) {
-                if (!div1.classList.contains('sr-only')) {
-                    a1.style.backgroundColor = 'rgb(58, 145, 136)';
-                    a2.style.backgroundColor = 'rgb(58, 145, 136, 0)';
-                    div1.classList.add('sr-only');
-                    div2.classList.add('sr-only');
-                    div3.classList.remove('sr-only');
-                    div4.classList.remove('sr-only');
-                }
+// Definición de la función toggleSkillsVisibility en TypeScript
+function toggleSkillsVisibility(
+    a1Id: string,
+    a2Id: string,
+    div1Id: string,
+    div2Id: string,
+    div3Id: string,
+    div4Id: string
+): void {
+    // Obtiene el primer anchor y le añade el evento click
+    document.getElementById(a1Id)?.addEventListener('click', function (event: Event) {
+        event.preventDefault();
+
+        // Obtiene los elementos del DOM
+        const a1 = document.getElementById(a1Id) as HTMLAnchorElement | null;
+        const a2 = document.getElementById(a2Id) as HTMLAnchorElement | null;
+        const div1 = document.getElementById(div1Id) as HTMLDivElement | null;
+        const div2 = document.getElementById(div2Id) as HTMLDivElement | null;
+        const div3 = document.getElementById(div3Id) as HTMLDivElement | null;
+        const div4 = document.getElementById(div4Id) as HTMLDivElement | null;
+
+        // Verificación de que todos los elementos existen
+        if (div1 && div2 && div3 && div4 && a1 && a2) {
+            // Si el div1 no contiene la clase 'sr-only', realiza los cambios
+            if (!div1.classList.contains('sr-only')) {
+                // Cambia el color de fondo de los anchors
+                a1.style.backgroundColor = 'rgb(58, 145, 136)';
+                a2.style.backgroundColor = 'rgba(58, 145, 136, 0)';
+
+                // Agrega y remueve las clases correspondientes
+                div1.classList.add('sr-only');
+                div2.classList.add('sr-only');
+                div3.classList.remove('sr-only');
+                div4.classList.remove('sr-only');
             }
-        });
-    }
+        }
+    });
+}
 
 </script>
 

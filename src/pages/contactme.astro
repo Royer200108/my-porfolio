@@ -1,0 +1,84 @@
+---
+import Layout from "../layouts/Layout.astro"
+import TextBox from "../components/TextBox.astro"
+---
+
+<Layout title="Contactame - Roger Barahona">
+
+    <div slot="left-side"  class="p-4 flex flex-col space-y-4 justify-center items-center">
+        <TextBox 
+        title1="Contactame..." 
+        title2="¿Tienes algún proyecto en mente?"
+        content1=""
+        content2="Puedes ponerte en contacto conmigo y hazme saber cómo puedo ayudarte. Rellena el formulario y me pondré en contacto contigo lo antes posible."
+        >
+        <img src="/public/images/Logo.png" alt="">
+        </TextBox>
+    </div>
+    <div slot="rigth-side" class="p-4 flex flex-col space-y-4 justify-center items-center">
+            <form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
+                <div class="flex pb-4">
+                    <div class="row pl-2 pr-2 w-1/2">
+                        <input id="name" class="form input rounded-lg pt-2 pb-2 pl-4 pr-4 bg-transparent" name="name" type="text" placeholder="Tu nombre..." required/><br />
+                        <span id="name_validation" class="error_message"></span>
+                    </div>
+                    <div class="row pl-2 pr-2 w-1/2">
+                        <input id="email" class="form input rounded-lg pt-2 pb-2 pl-4 pr-4 bg-transparent" name="email" type="text" placeholder="Tu correo electronico..." required/><br />
+                        <span id="email_validation" class="error_message"></span>
+                    </div>
+                </div>
+                <div class="row pl-2 pr-2">
+                    <textarea id="message" class="form input rounded-lg pt-2 pb-2 pl-4 pr-4 bg-transparent" name="message" rows="10" style="width: 100%; resize:none" placeholder="Tu mensaje..." required></textarea><br />
+                    <span id="message_validation" class="error_message"></span>
+                </div>
+
+                <button class="flex items-center justify-center w-36 p-2 m-4 h-10 text-white rounded-full hover:text-black" style="background-color: rgb(58, 145, 136);" type="submit">
+                    Enviar mensaje
+                </button>
+              </form>
+              <a id="caller" href="mailto:rogerdaneribarahona@gmail.com">mail</a>
+    </div>
+
+</Layout>
+
+<style>
+    .form{
+        color: rgb(184,225,221);
+        border-width: 2px;
+        border-color: rgb(184,225,221);
+    }
+    #caller{
+        display: none;
+    }
+
+</style>
+
+<script>
+const $form = document.querySelector<HTMLFormElement>('#contact_form');
+const $buttonMailTo = document.querySelector<HTMLAnchorElement>('#caller');
+
+// Solo agregamos el listener si el formulario existe
+$form?.addEventListener('submit', handleSubmit);
+
+// Función para manejar el evento submit
+function handleSubmit(event: Event): void {
+    event.preventDefault();  // Prevenir el comportamiento predeterminado del formulario
+
+    if (!$form) return;  // Verificamos que el formulario exista antes de continuar
+
+    // Creamos el objeto FormData a partir del formulario
+    const form = new FormData($form);
+
+    // Obtenemos los valores del formulario y modificamos el href del botón
+    const name = form.get('name') as string;
+    const email = form.get('email') as string;
+    const message = form.get('message') as string;
+
+    // Establecemos el atributo href con el formato mailto
+    $buttonMailTo?.setAttribute('href', `mailto:rogerdaneribarahona@gmail.com?subject=${name} - ${email}&body=${message}`);
+    
+    // Simulamos el clic en el botón para abrir el cliente de correo
+    $buttonMailTo?.click();
+}
+
+</script>
