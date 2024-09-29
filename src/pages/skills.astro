@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets"
 import Layout from "../layouts/Layout.astro"
 import TextBox from "../components/TextBox.astro"
 import ConsoleDiv from "../components/ConsoleDiv.astro"
@@ -9,44 +10,44 @@ const tecnologicalsSkills = [
     { 
         title: 'Lenguajes de programacion', 
         elements:[
-            { title: 'Java', href: '/public/images/skills/java.png' },
-            { title: 'JavaScript', href:'/public/images/skills/js.png' },
-            { title: 'TypeScript', href: '/public/images/skills/typescript.png' },
-            { title: 'Bash', href: '/public/images/skills/gnu-bash.png' },
-            { title: 'Python', href: '/public/images/skills/python.png' },
+            { title: 'Java', href: '/images/skills/java.png' },
+            { title: 'JavaScript', href:'/images/skills/js.png' },
+            { title: 'TypeScript', href: '/images/skills/typescript.png' },
+            { title: 'Bash', href: '/images/skills/gnu-bash.png' },
+            { title: 'Python', href: '/images/skills/python.png' },
         ]
     },
     { 
         title: 'Frameworks', 
         elements:[
-            { title: 'SpringBoot', href: '/public/images/skills/springboot.png'},
-            { title: 'NodeJS', href: '/public/images/skills/nodejs.png'},
-            { title: 'BootsTrap', href: '/public/images/skills/bootstrap.png'},
+            { title: 'SpringBoot', href: '/images/skills/springboot.png'},
+            { title: 'NodeJS', href: '/images/skills/nodejs.png'},
+            { title: 'BootsTrap', href: '/images/skills/bootstrap.png'},
         ]
     },
     { 
         title: 'Herramientas Web', 
         elements:[
-            { title: 'HTML', href: '/public/images/skills/html.png'},
-            { title: 'CSS', href: '/public/images/skills/css.png'},
+            { title: 'HTML', href: '/images/skills/html.png'},
+            { title: 'CSS', href: '/images/skills/css.png'},
         ]
     },
     { 
         title: 'Versionamiento', 
         elements:[
-            { title: 'Git', href: '/public/images/skills/git.png'},
-            { title: 'GitHub', href: '/public/images/skills/github.png'},
+            { title: 'Git', href: '/images/skills/git.png'},
+            { title: 'GitHub', href: '/images/skills/github.png'},
         ]
     },
     { 
         title: 'Sistemas operativos y entornos de desarrollo', 
         elements:[
-            { title: 'Linux', href: '/public/images/skills/linux.png'},
-            { title: 'Windows', href: '/public/images/skills/windows.png'},
-            { title: 'jupyter', href: '/public/images/skills/jupyter.png'},
-            { title: 'VSCode', href: '/public/images/skills/vscode.png'},
-            { title: 'Eclipse', href: '/public/images/skills/eclipse.png'},
-            { title: 'Google Colab', href: '/public/images/skills/google-colab.png'},
+            { title: 'Linux', href: '/images/skills/linux.png'},
+            { title: 'Windows', href: '/images/skills/windows.png'},
+            { title: 'jupyter', href: '/images/skills/jupyter.png'},
+            { title: 'VSCode', href: '/images/skills/vscode.png'},
+            { title: 'Eclipse', href: '/images/skills/eclipse.png'},
+            { title: 'Google Colab', href: '/images/skills/google-colab.png'},
         ]
     },
 ]
@@ -132,7 +133,13 @@ const softSkills = [
                         <div class="flex p-4">
                             {item.elements.map((element) =>(
                                 <div style="width: 90px; heigth: 90px" class="p-2 bg-white rounded-lg m-2 image-container z-10">
-                                    <img src={element.href} style="width: 60px, heigth: 60px ">
+                                    <Image
+                                        src={element.href}
+                                        alt=""
+                                        width={70}
+                                        height={70}
+                                        class=""
+                                    />
                                     <span class="hover-text">{element.title}</span>
                                 </div>
                             ))}
@@ -147,7 +154,10 @@ const softSkills = [
                         <p> >. {item.label}</p>
                         <div class="grid grid-cols-2 p-4 " style="color:black">
                             {item.elements.map((element) =>(
-                                <SkillCards emoji={ element.emoji } title={element.title} description={element.description}/>
+                                <SkillCards 
+                                emoji={ element.emoji } 
+                                title={element.title} 
+                                description={element.description}/>
                             ))}
                         </div>
                     ))}

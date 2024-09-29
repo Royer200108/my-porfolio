@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import TextBox from "../components/TextBox.astro";
 import ProjectCards from "../components/ProjectCards.astro";
@@ -7,36 +8,36 @@ const projects = [
     
     {
         title: 'GearShift Rent A Car',
-        img:'../../public/images/projects/gearshift.png',
+        img:'/images/projects/gearshift.png',
         route:'/projects/gearshift',
         tecnologies:[
             {
-                route: '../../public/images/skills/html.png',
+                route: '/images/skills/html.png',
             },
             {
-                route: '../../public/images/skills/css.png',
+                route: '/images/skills/css.png',
             },
             {
-                route: '../../public/images/skills/bootstrap.png',
+                route: '/images/skills/bootstrap.png',
             }
         ]
     },    
     {
         title: 'MacaoExpress',
-        img:'../../public/images/projects/macaoexpress.png',
+        img:'/images/projects/macaoexpress.png',
         route:'macaoexpress',
         tecnologies:[
             {
-                route: '../../public/images/skills/html.png',
+                route: '/images/skills/html.png',
             },
             {
-                route: '../../public/images/skills/css.png',
+                route: '/images/skills/css.png',
             },
             {
-                route: '../../public/images/skills/bootstrap.png',
+                route: '/images/skills/bootstrap.png',
             },
             {
-                route: '../../public/images/skills/linux.png',
+                route: '/images/skills/linux.png',
             }
         ]
     },
