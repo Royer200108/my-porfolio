@@ -1,5 +1,7 @@
 ---
+    import { Image } from 'astro:assets';
     import '@fontsource-variable/reddit-sans';
+    import '../styles/styles.css'
 
     const navItems = [
         { title: 'Sobre Mí', href: '/' },
@@ -12,7 +14,15 @@
 <div class="bg-components fixed top-0 left-0 right-0 nav-links z-40">
     <div class="w-full flex">
         <div class="w-2/5 pl-16 py-1">
-            <a href="/" class="flex logo"><img src="/public/images/Logo.png" alt="Roger's photo" class="logo"></a>
+            <a href="/" class="flex logo">
+                <Image
+                    src="/images/Logo.png"
+                    alt=""
+                    width={65}
+                    height={65}
+                    class="logo"
+                />
+            </a>
         </div>
         <div class="w-3/5 flex">
             <ul class="w-5/6 flex justify-around items-center ">
@@ -25,8 +35,4 @@
         </div>
     </div>
 </div>
-
-<head>
-    <link rel="stylesheet" href="/src/styles/styles.css">
-</head>
 
