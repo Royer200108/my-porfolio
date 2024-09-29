@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets"
 import Layout from "../layouts/Layout.astro"
 import TextBox from "../components/TextBox.astro"
 ---
@@ -12,7 +13,13 @@ import TextBox from "../components/TextBox.astro"
         content1=""
         content2="Puedes ponerte en contacto conmigo y hazme saber cómo puedo ayudarte. Rellena el formulario y me pondré en contacto contigo lo antes posible."
         >
-        <img src="/public/images/Logo.png" alt="">
+        <Image
+            src="/images/Logo.png"
+            alt=""
+            width={366}
+            height={366}
+            class=""
+        />
         </TextBox>
     </div>
     <div slot="rigth-side" class="p-4 flex flex-col space-y-4 justify-center items-center">
