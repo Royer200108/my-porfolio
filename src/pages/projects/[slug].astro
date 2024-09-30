@@ -48,7 +48,7 @@ const { Content, headings } = await entry.render();
     </div>
 
     <div slot="rigth-side" class="p-4 flex flex-col space-y-4 justify-center items-center ">
-      <a href="" class="anchor">
+      <a href={entry.data.url}  class="anchor">
         <Image
           src={entry.data.icon}
           alt=""
@@ -57,7 +57,7 @@ const { Content, headings } = await entry.render();
           class="rounded-xl"
         />
       </a>
-      <a href="https://github.com/Royer200108" target="_blank" rel="noopener noreferrer" class="">
+      <a href={entry.data.url} target="_blank" rel="noopener noreferrer" class="">
         <Image
         src="/images/skills/github.png"
         alt=""
