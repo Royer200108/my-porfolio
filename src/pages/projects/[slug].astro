@@ -19,6 +19,7 @@ interface Props {
       description: string;
       icon: string;
       url: string;
+      video_url: string;
     };
     render: () => Promise<{ Content: any; headings: any[] }>;
   };
@@ -26,9 +27,11 @@ interface Props {
 
 const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
+
+const showImage = entry.data.video_url != "";
 ---
 
-<Layout title={`${entry.data.title} - Uayeb Caballero`}>
+<Layout title={`${entry.data.title} - Roger Barahona`}>
     
     <div>Hola</div>
 
@@ -57,15 +60,29 @@ const { Content, headings } = await entry.render();
           class="rounded-xl"
         />
       </a>
-      <a href={entry.data.url} target="_blank" rel="noopener noreferrer" class="">
-        <Image
-        src="/images/skills/github.png"
-        alt=""
-        width={70}
-        height={70}
-        class=""
-      />
-    </a>
+      <div class="flex w-full justify-around">
+        <a href={entry.data.url} target="_blank" rel="noopener noreferrer" class="">
+          <Image
+            src="/images/skills/github.png"
+            alt=""
+            width={70}
+            height={70}
+            class=""
+          />
+        </a>
+        {showImage && (
+          <a href={entry.data.video_url} target="_blank" rel="noopener noreferrer" class="">
+          <Image
+            src="/images/extras/youtube.png"
+            alt=""
+            width={70}
+            height={70}
+            class="pt-2"
+          />
+        </a>
+        )}
+      </div>
+      
     </div>
 </Layout>
 
